@@ -1,5 +1,11 @@
 FROM eeacms/plone:5.2.4-78
 
+ENV GRAYLOG_FACILITY=wise-plone
+
+RUN buildDeps="build-essential libldap2-dev libsasl2-dev libssl-dev git vim xz-utils curl" \
+               && apt-get update \
+               && apt-get install -y --no-install-recommends $buildDeps 
+
 RUN mv /plone/instance/versions.cfg /plone/instance/eea-versions.cfg
 
 COPY src/docker/* /
