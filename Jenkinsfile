@@ -8,25 +8,6 @@ pipeline {
 
   stages {
     
-    stage('Pull Request') {
-      when {
-        not {
-          environment name: 'CHANGE_ID', value: ''
-        }
-        environment name: 'CHANGE_TARGET', value: 'master'
-      }
-      steps {
-        node(label: 'docker') {
-          script {
-            if ( env.CHANGE_BRANCH != "develop" ) {
-                error "Pipeline aborted due to PR not made from develop branch"
-            }
-          }
-        }
-      }
-    }
-
-
 
     stage('Build & Test') {
        when {
@@ -60,21 +41,6 @@ pipeline {
 
       }
     }
-
-
-   stage('Create github release'){
-      when {
-        branch 'master'
-      }
-
-      steps {
-        node(label: 'docker') {
-          withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GITHUB_TOKEN'), usernamePassword(credentialsId: 'jekinsdockerhub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
-           sh '''docker pull eeacms/gitflow; docker run -i --rm --name="$BUILD_TAG-ms" -e GIT_BRANCH="master" -e GIT_NAME="marine-backend" -e GIT_TOKEN="$GITHUB_TOKEN" -e DOCKERHUB_USER="$DOCKERHUB_USER" -e DOCKERHUB_PASS="$DOCKERHUB_PASS" -e DOCKERHUB_REPO="$registry" -e GITFLOW_BEHAVIOR="TAG_ONLY" -e EXTRACT_VERSION_SH=calculate_next_release.sh eeacms/gitflow'''
-         }
-       }
-     }
-   }
 
 
 
