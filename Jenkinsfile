@@ -9,15 +9,9 @@ pipeline {
   stages {
     
 
-    stage('Build & Test') {
-       when {
-         anyOf {
-           environment name: 'CHANGE_ID', value: ''
-           allOf {
-             not { environment name: 'CHANGE_ID', value: '' }
-             environment name: 'CHANGE_TARGET', value: 'master'
-           }
-         }
+    stage('Test Build & Test') {
+      when {
+        branch 'master'
       }
       environment {
         IMAGE_NAME = BUILD_TAG.toLowerCase()
@@ -27,14 +21,9 @@ pipeline {
           script {
             try {
               checkout scm
-              // sh '''sed -i "s|eeacms/marine-backend|${IMAGE_NAME}|g" devel/Dockerfile'''
               sh '''docker build -t ${IMAGE_NAME} .'''
-              // sh '''docker build -t ${IMAGE_NAME}-devel devel'''
-              // sh '''docker run -i --name=${IMAGE_NAME} -e EXCLUDE="${EXCLUDE}" -e GIT_BRANCH="${CHANGE_TARGET:-$GIT_BRANCH}" ${IMAGE_NAME} /debug.sh tests'''
             } finally {
-              sh script: "docker rm -v ${IMAGE_NAME}", returnStatus: true
               sh script: "docker rmi ${IMAGE_NAME}", returnStatus: true
-              // sh script: "docker rmi ${IMAGE_NAME}-devel", returnStatus: true     
             }
           }
         }
