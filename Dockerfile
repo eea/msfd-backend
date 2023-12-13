@@ -16,5 +16,6 @@ RUN ar x wkhtmltopdf.deb
 RUN tar Jxvf data.tar.xz
 RUN mkdir /plone/instance/parts/wkhtmltopdf
 RUN mv usr/local/bin/wkhtmltopdf /plone/instance/parts/wkhtmltopdf/wkhtmltopdf
+RUN pip install chardet
 
 RUN /docker-setup.sh
