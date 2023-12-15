@@ -1,4 +1,4 @@
-FROM eeacms/plone:5.2.13-19
+FROM eeacms/plone:5.2.13-20
 
 ENV GRAYLOG_FACILITY=wise-plone
 
