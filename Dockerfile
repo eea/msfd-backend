@@ -11,5 +11,6 @@ RUN buildDeps="build-essential libldap2-dev libsasl2-dev libssl-dev git vim xz-u
     && tar Jxvf data.tar.xz \
     && mkdir /plone/instance/parts/wkhtmltopdf \
     && mv usr/local/bin/wkhtmltopdf /plone/instance/parts/wkhtmltopdf/wkhtmltopdf \
+    && pip install chardet \
     && find /plone -not -user plone -exec chown plone:plone {} \+ \
     && gosu plone buildout -c site.cfg
