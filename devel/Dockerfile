@@ -1,4 +1,6 @@
-FROM eeacms/plonesaas:5.2.4-68
+FROM eeacms/marine-backend
+
+COPY devel.cfg /plone/instance/
 
 COPY docker-setup.sh /
 RUN /docker-setup.sh

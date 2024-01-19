@@ -2,6 +2,7 @@ pipeline {
   environment {
     registry = 'eeacms/marine-backend'
     template = 'templates/marine-backend'
+    GIT_NAME = 'marine-backend'
   }
 
   agent any
