@@ -47,7 +47,6 @@ pipeline {
           script {
             try {
               checkout scm
-              sh '''sed -i "s|eeacms/marine-backend|${IMAGE_NAME}|g" devel/Dockerfile'''
               sh '''docker build -t ${IMAGE_NAME} .'''
               // sh '''docker run -i --name=${IMAGE_NAME} -e EXCLUDE="${EXCLUDE}" -e GIT_BRANCH="${CHANGE_TARGET:-$GIT_BRANCH}" ${IMAGE_NAME}-devel /debug.sh tests'''
             } finally {
