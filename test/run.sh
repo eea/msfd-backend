@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/opt/homebrew/bin/bash
 set -e
 
 dir="$(dirname "$(readlink -f "$BASH_SOURCE")")"
