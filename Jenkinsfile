@@ -9,10 +9,35 @@ pipeline {
 
   stages {
     
-
-    stage('Test Build & Test') {
+    stage('Pull Request') {
       when {
-        branch 'master'
+        not {
+          environment name: 'CHANGE_ID', value: ''
+        }
+        environment name: 'CHANGE_TARGET', value: 'master'
+      }
+      steps {
+        node(label: 'docker') {
+          script {
+            if ( env.CHANGE_BRANCH != "develop" ) {
+                error "Pipeline aborted due to PR not made from develop branch"
+            }
+          }
+        }
+      }
+    }
+
+
+
+    stage('Build & Test') {
+       when {
+         anyOf {
+           environment name: 'CHANGE_ID', value: ''
+           allOf {
+             not { environment name: 'CHANGE_ID', value: '' }
+             environment name: 'CHANGE_TARGET', value: 'master'
+           }
+         }
       }
       environment {
         IMAGE_NAME = BUILD_TAG.toLowerCase()
@@ -22,15 +47,35 @@ pipeline {
           script {
             try {
               checkout scm
+              sh '''sed -i "s|eeacms/marine-backend|${IMAGE_NAME}|g" devel/Dockerfile'''
               sh '''docker build -t ${IMAGE_NAME} .'''
+              sh '''docker build -t ${IMAGE_NAME}-devel devel'''
+              sh '''docker run -i --name=${IMAGE_NAME} -e EXCLUDE="${EXCLUDE}" -e GIT_BRANCH="${CHANGE_TARGET:-$GIT_BRANCH}" ${IMAGE_NAME}-devel gosu plone /debug.sh tests'''
             } finally {
+              sh script: "docker rm -v ${IMAGE_NAME}", returnStatus: true
               sh script: "docker rmi ${IMAGE_NAME}", returnStatus: true
+              sh script: "docker rmi ${IMAGE_NAME}-devel", returnStatus: true
             }
           }
         }
 
       }
     }
+
+
+   stage('Create github release'){
+      when {
+        branch 'master'
+      }
+
+      steps {
+        node(label: 'docker') {
+          withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GITHUB_TOKEN'), usernamePassword(credentialsId: 'jekinsdockerhub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
+           sh '''docker pull eeacms/gitflow; docker run -i --rm --name="$BUILD_TAG" -e GIT_BRANCH="master" -e GIT_NAME="$GIT_NAME" -e GIT_TOKEN="$GITHUB_TOKEN" -e DOCKERHUB_USER="$DOCKERHUB_USER" -e DOCKERHUB_PASS="$DOCKERHUB_PASS" -e DOCKERHUB_REPO="$registry" -e GITFLOW_BEHAVIOR="TAG_ONLY" -e EXTRACT_VERSION_SH=calculate_next_release.sh eeacms/gitflow'''
+         }
+       }
+     }
+   }
 
 
 
