@@ -1,14 +1,14 @@
 pipeline {
   environment {
-    registry = 'eeacms/marine-backend'
-    template = 'templates/marine-backend'
-    GIT_NAME = 'marine-backend'
+    registry = 'eeacms/msfd-backend'
+    template = 'templates/msfd-backend'
+    GIT_NAME = 'msfd-backend'
   }
 
   agent any
 
   stages {
-    
+
     stage('Pull Request') {
       when {
         not {
@@ -47,7 +47,7 @@ pipeline {
           script {
             try {
               checkout scm
-              sh '''sed -i "s|eeacms/marine-backend|${IMAGE_NAME}|g" devel/Dockerfile'''
+              sh '''sed -i "s|eeacms/msfd-backend|${IMAGE_NAME}|g" devel/Dockerfile'''
               sh '''docker build -t ${IMAGE_NAME} .'''
               sh '''docker build -t ${IMAGE_NAME}-devel devel'''
               sh '''docker run -i --name=${IMAGE_NAME} -e EXCLUDE="${EXCLUDE}" -e GIT_BRANCH="${CHANGE_TARGET:-$GIT_BRANCH}" ${IMAGE_NAME}-devel gosu plone /debug.sh tests'''

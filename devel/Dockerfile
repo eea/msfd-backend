@@ -1,4 +1,4 @@
-FROM eeacms/marine-backend
+FROM eeacms/msfd-backend
 
 COPY devel.cfg /plone/instance/
 COPY docker-setup.sh /
