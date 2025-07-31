@@ -19,6 +19,12 @@ apt-get update
 apt-get install -y --no-install-recommends $runDeps
 
 echo "========================================================================="
+echo "Checking Robot Framework version"
+echo "========================================================================="
+
+gosu plone pip freeze | grep -i robot
+
+echo "========================================================================="
 echo "Running buildout -c devel.cfg"
 echo "========================================================================="
 
