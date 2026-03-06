@@ -1,0 +1,46 @@
+# Plone 6 requirements
+# Find links for additional package repositories
+-f https://eggrepo.eea.europa.eu/simple/
+-f https://pypi.org/simple/
+-f https://eggshop.eaudeweb.ro
+-f https://code.codesyntax.com/static/public
+
+# Core Plone packages
+# plone.app.imagecropping
+# plone.tiles
+# plone.autoinclude
+# plone.restapi
+# plone.rest
+# plone.volto
+# plone.api
+
+# EEA packages
+wise.msfd
+eea.api.dataconnector
+eea.restapi
+eea.plotly
+eea.coremetadata
+eea.volto.policy
+eea.progress.workflow
+eea.api.visualizationutils
+# eea.privacyscreen
+
+# Development packages (git sources)
+# -e git+https://github.com/eea/eea.privacyscreen.git@master#egg=eea.privacyscreen
+
+# Collective packages
+# collective.MockMailHost
+collective.exportimport
+collective.relationhelpers
+# collective.z3cform.datagridfield
+
+# Third-party packages
+# eventlet
+# rdflib-jsonld
+# SQLAlchemy
+# openpyxl
+# ijson
+# hurry.filesize
+# zope.sqlalchemy
+# pymssql
+

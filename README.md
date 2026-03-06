@@ -1,3 +1,3 @@
-# msfd-backend
+# marine-backend
 
-Plone 5 backend for the WISE-Marine Assessment-Module website
+Plone 5 backend for the WISE-Marine website

@@ -1,0 +1,63 @@
+# Plone 6 version constraints
+-f https://eggrepo.eea.europa.eu/simple/
+-f https://pypi.org/simple/
+-f https://eggshop.eaudeweb.ro
+-f https://code.codesyntax.com/static/public
+
+# Use Plone 6 constraints as base
+
+# Exclude conflicting packages
+#pas.plugins.authomatic==999999  # Force exclusion - conflicts with plone.restapi @login service
+
+# Fix collections.MutableMapping compatibility issues
+# zope.interface>=5.0.0
+# zope.schema>=6.0.0
+# zope.component>=5.0.0
+# zope.configuration>=4.4.0
+# persistent>=4.9.0
+# setuptools>=60.0.0
+
+# Additional packages that might cause collections.MutableMapping issues
+# Products.CMFPlone>=6.0.0
+# Products.CMFCore>=2.7.0
+# Products.GenericSetup>=2.2.0
+# Products.PluggableAuthService>=2.8.0
+# five.localsitemanager>=3.0.0
+# collective.monkeypatcher>=1.2.0
+
+# Core Plone version constraints
+# Let Plone 6 constraints decide the versions for core packages
+# plone.autoinclude - managed by Plone 6 constraints
+# plone.restapi - managed by Plone 6 constraints  
+# plone.rest - managed by Plone 6 constraints
+# plone.volto - managed by Plone 6 constraints
+# plone.api - managed by Plone 6 constraints
+
+# EEA packages with versions
+eea.api.dataconnector==12.5
+eea.restapi==2.9
+eea.plotly==2.2
+eea.coremetadata==5.4
+eea.volto.policy==11.3
+eea.progress.workflow==3.1
+eea.api.visualizationutils==1.4
+
+# WISE packages
+wise.msfd @ git+https://github.com/eea/wise.msfd@plone5
+
+# Collective packages - updated versions for Plone 6
+collective.exportimport==1.15
+collective.relationhelpers==1.6
+
+# collective.z3cform.datagridfield - managed by Plone 6 constraints
+
+# Third-party packages with versions
+# rdflib-jsonld==0.6.2
+# SQLAlchemy==1.4.46
+# openpyxl==3.0.10
+# ijson==3.2.0.post0
+# hurry.filesize==0.9
+# zope.sqlalchemy - let Plone 6 constraints decide
+
+# Keep z3c.form constraint to avoid compatibility issues
+#z3c.form<4.0

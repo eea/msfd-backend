@@ -1,16 +1,39 @@
-FROM eeacms/plone:5.2.13-45
+FROM eeacms/plone-backend:6.1.3-2
 
 ENV GRAYLOG_FACILITY=wise-plone
+ENV SECURITY_POLICY_IMPLEMENTATION=C 
+ENV VERBOSE_SECURITY=off
+ENV DEFAULT_ZPUBLISHER_ENCODING=utf-8
 
-COPY site.cfg /plone/instance/
-RUN buildDeps="build-essential libldap2-dev libsasl2-dev libssl-dev git vim xz-utils curl" \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends $buildDeps \
+COPY requirements.txt constraints.txt /app/
+
+# Install wkhtmltopdf and dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    curl \
+    gcc \
+    g++ \
+    make \
+    freetds-dev \
+    libssl-dev \
+    libffi-dev \
+    unixodbc-dev \
+    wkhtmltopdf \
+    xvfb \
+    fonts-dejavu-core \
+    fontconfig \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
     && curl "https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb" -L -o "wkhtmltopdf.deb" \
     && ar x wkhtmltopdf.deb \
     && tar Jxvf data.tar.xz \
-    && mkdir /plone/instance/parts/wkhtmltopdf \
-    && mv usr/local/bin/wkhtmltopdf /plone/instance/parts/wkhtmltopdf/wkhtmltopdf \
-    && pip install chardet \
-    && find /plone -not -user plone -exec chown plone:plone {} \+ \
-    && gosu plone buildout -c site.cfg
+    # this is needed because I can't change the default path to wkhtmltopdf
+    && mkdir -p /plone/instance/parts/wkhtmltopdf \
+    && mv usr/local/bin/wkhtmltopdf /plone/instance/parts/wkhtmltopdf/wkhtmltopdf
+
+# Ensure build isolation subprocesses also honor constraints (pymssql/Cython)
+ENV PIP_CONSTRAINT=/app/constraints.txt
+
+# Install Python packages
+RUN ./bin/pip install -r requirements.txt -c constraints.txt ${PIP_PARAMS} \
+    && find /app -not -user plone -exec chown -h plone:plone {} \+
