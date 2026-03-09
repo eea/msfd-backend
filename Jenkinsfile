@@ -1,8 +1,8 @@
 pipeline {
   environment {
-    registry = 'eeacms/marine-backend'
-    template = 'templates/marine-backend'
-    GIT_NAME = 'marine-backend'
+    registry = 'eeacms/msfd-backend'
+    template = 'templates/msfd-backend'
+    GIT_NAME = 'msfd-backend'
   }
 
   agent any
@@ -47,7 +47,7 @@ pipeline {
           script {
             try {
               checkout scm
-              sh '''sed -i "s|eeacms/marine-backend|${IMAGE_NAME}|g" develop/Dockerfile'''
+              sh '''sed -i "s|eeacms/msfd-backend|${IMAGE_NAME}|g" develop/Dockerfile'''
               sh '''docker build -t ${IMAGE_NAME} .'''
               // sh '''docker build -t ${IMAGE_NAME}-devel devel'''
               // sh '''docker run -i --name=${IMAGE_NAME} -e EXCLUDE="${EXCLUDE}" -e GIT_BRANCH="${CHANGE_TARGET:-$GIT_BRANCH}" ${IMAGE_NAME}-devel gosu plone /debug.sh tests'''
@@ -87,7 +87,7 @@ pipeline {
         node(label: 'docker') {
           script {
             withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GITHUB_TOKEN'),  usernamePassword(credentialsId: 'jekinsdockerhub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
-              sh '''docker pull eeacms/gitflow; docker run -i --rm --name="$BUILD_TAG"  -e GIT_BRANCH="$BRANCH_NAME" -e GIT_NAME="$GIT_NAME" -e DOCKERHUB_REPO="$registry" -e GIT_TOKEN="$GITHUB_TOKEN" -e DOCKERHUB_USER="$DOCKERHUB_USER" -e DOCKERHUB_PASS="$DOCKERHUB_PASS"  -e DEPENDENT_DOCKERFILE_URL="$DEPENDENT_DOCKERFILE_URL" -e TRIGGER_RELEASE="" -e RANCHER_CATALOG_PATHS="$template" -e GITFLOW_BEHAVIOR="RUN_ON_TAG" eeacms/gitflow'''
+              sh '''docker pull eeacms/gitflow; docker run -i --rm --name="$BUILD_TAG"  -e GIT_BRANCH="$BRANCH_NAME" -e GIT_NAME="$GIT_NAME" -e DOCKERHUB_REPO="eeacms/msfd-backend" -e GIT_TOKEN="$GITHUB_TOKEN" -e DOCKERHUB_USER="$DOCKERHUB_USER" -e DOCKERHUB_PASS="$DOCKERHUB_PASS" -e TRIGGER_MAIN_URL="$TRIGGER_MAIN_URL" -e DEPENDENT_DOCKERFILE_URL="" -e GITFLOW_BEHAVIOR="RUN_ON_TAG" eeacms/gitflow'''
              }
           }
         }
