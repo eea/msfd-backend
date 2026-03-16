@@ -1,4 +1,4 @@
-FROM eeacms/marine-backend 
+FROM eeacms/plone-backend:6.1.3-2
 
 RUN runDeps="vim tmux mc curl" \
     && apt-get update \
@@ -24,5 +24,5 @@ RUN playwright install-deps
 ENV PLAYWRIGHT_BROWSERS_PATH=/app/.cache/ms-playwright
 RUN playwright install chromium firefox
 
-# bin/pip install "mxdev>=3.0.0" && bin/mxdev -c sources.ini && bin/pip install -r requirements-mxdev.txt && find /app -not -user plone -exec chown -h plone:plone {} \+
 # git config --global --add safe.directory '*'
+# bin/pip install "mxdev>=3.0.0" && bin/mxdev -c sources.ini && bin/pip install -r requirements-mxdev.txt && find /app -not -user plone -exec chown -h plone:plone {} \+
