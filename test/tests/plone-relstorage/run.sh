@@ -5,41 +5,44 @@ dir="$(dirname "$(readlink -f "$BASH_SOURCE")")"
 
 image="$1"
 
-PLONE_TEST_SLEEP=6
-PLONE_TEST_TRIES=30
-POSTGRES_IMAGE="eeacms/postgres:9.6-3.5"
+PLONE_TEST_SLEEP=10
+PLONE_TEST_TRIES=10
 
-# Start PostgreSQL server
-zname="postgres-container-$RANDOM-$RANDOM"
-zid="$(docker run -d --name "$zname" -e POSTGRES_DBNAME="datafs zasync" -e POSTGRES_DBUSER=zope -e POSTGRES_DBPASS=zope -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres $POSTGRES_IMAGE)"
+# Start Postgres
+zname="relstorage-container-$RANDOM-$RANDOM"
+zpull="$(docker pull postgres:12-alpine)"
+zid="$(docker run -d --name "$zname" -e POSTGRES_USER=plone -e POSTGRES_PASSWORD=plone -e POSTGRES_DB=plone postgres:12-alpine)"
 
 # Start Plone as RelStorage Client
 pname="plone-container-$RANDOM-$RANDOM"
-pid="$(docker run -d --name "$pname" --link=$zname:postgres -e ZOPE_MODE=rel_client "$image")"
+pid="$(docker run -d --name "$pname" --link=$zname:db -e RELSTORAGE_DSN="dbname='plone' user='plone' host='db' password='plone'" "$image")"
 
 # Tear down
 trap "docker rm -vf $pid $zid > /dev/null" EXIT
 
 get() {
-	docker run --rm -i \
-		--link "$pname":plone \
-		--entrypoint /plone/instance/bin/zopepy \
-		"$image" \
-		-c "from six.moves.urllib.request import urlopen; con = urlopen('$1'); print(con.read())"
+        docker run --rm -i \
+                --link "$pname":plone \
+                --entrypoint /app/bin/python \
+                "$image" \
+                -c "from urllib.request import urlopen; con = urlopen('$1'); print(con.read())"
 }
 
 get_auth() {
-	docker run --rm -i \
-		--link "$pname":plone \
-		--entrypoint /plone/instance/bin/zopepy \
-		"$image" \
-		-c "from six.moves.urllib.request import urlopen, Request; request = Request('$1'); request.add_header('Authorization', 'Basic $2'); print(urlopen(request).read())"
+        docker run --rm -i \
+                --link "$pname":plone \
+                --entrypoint /app/bin/python \
+                "$image" \
+                -c "from urllib.request import urlopen, Request; request = Request('$1'); request.add_header('Authorization', 'Basic $2'); print(urlopen(request).read())"
 }
 
 . "$dir/../../retry.sh" --tries "$PLONE_TEST_TRIES" --sleep "$PLONE_TEST_SLEEP" get "http://plone:8080"
 
 # Plone is up and running
-[[ "$(get 'http://plone:8080')" == *"Plone is up and running"* ]]
+[[ "$(get 'http://plone:8080')" == *"Welcome to Plone!"* ]]
 
-# Create a Plone site
-[[ "$(get_auth 'http://plone:8080/@@plone-addsite' "$(echo -n 'admin:admin' | base64)")" == *"Create a Plone site"* ]]
+# Create a Plone site (classic)
+[[ "$(get_auth 'http://plone:8080/@@ploneAddSite?distribution=classic' "$(echo -n 'admin:admin' | base64)")" == *"Welcome to Plone!"* ]]
+
+# Create a Plone site (volto)
+[[ "$(get_auth 'http://plone:8080/@@ploneAddSite?distribution=volto' "$(echo -n 'admin:admin' | base64)")" == *"Welcome to Plone!"* ]]

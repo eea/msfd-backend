@@ -1,0 +1,34 @@
+# Plone 6 requirements
+# Find links for additional package repositories
+-f https://eggrepo.eea.europa.eu/simple/
+-f https://pypi.org/simple/
+-f https://eggshop.eaudeweb.ro
+-f https://code.codesyntax.com/static/public
+
+# Core Plone packages
+# plone.app.imagecropping
+# plone.tiles
+# Core Plone packages (restapi, rest, volto, api) managed by Plone 6 constraints
+
+# EEA packages
+eea.api.dataconnector
+eea.restapi
+eea.plotly
+eea.coremetadata
+eea.volto.policy
+eea.progress.workflow
+eea.api.visualizationutils
+
+# Development packages (git sources)
+# eea.privacyscreen - REMOVED: Not compatible with Python 3/Plone 6
+# Only supports Python 2.7 and Plone 4.3
+
+# Collective packages
+collective.exportimport
+collective.relationhelpers
+
+# Third-party packages
+# pdfkit
+
+# WISE packages
+wise.msfd
