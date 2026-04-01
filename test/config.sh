@@ -6,7 +6,7 @@ globalTests+=(
 )
 
 imageTests+=(
-	[eeacms/freshwater-backend]='
+	[eeacms/msfd-backend]='
 		plone-basics
 		plone-site
 		plone-addons
