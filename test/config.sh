@@ -14,7 +14,6 @@ imageTests+=(
 		plone-arbitrary-user
 		plone-listenport
 		plone-zeoclient
-		plone-relstorage
 	'
 )
 
