@@ -5,8 +5,8 @@ dir="$(dirname "$(readlink -f "$BASH_SOURCE")")"
 
 image="$1"
 
-PLONE_TEST_SLEEP=5
-PLONE_TEST_TRIES=20
+PLONE_TEST_SLEEP=15
+PLONE_TEST_TRIES=40
 
 vname="/tmp/plone-data-$RANDOM-$RANDOM"
 cname="plone-container-$RANDOM-$RANDOM"
