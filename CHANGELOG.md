@@ -1,6 +1,28 @@
 # Changelog
 
 
+## [6.1.3-17](https://github.com/eea/msfd-backend/releases/tag/6.1.3-17) - 2026-04-16T00:36:27Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.3-17 ~ 6.1.3-18 
+
+##### eeacms/plone-backend:[6.1.3-18](https://github.com/eea/plone-backend/releases/tag/6.1.3-18)
+###### Dependency updates
+
+###### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 5.4 ~ 5.5
+
+* Change: Add unit tests for seq_strip and tuplize functions
+ [avoinea]
+
+### Dependency updates
+
+##### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 5.4 ~ 5.5
+
+* Change: Add unit tests for seq_strip and tuplize functions
+  [avoinea]
+
+
 ## [6.1.3-16](https://github.com/eea/msfd-backend/releases/tag/6.1.3-16) - 2026-04-15T00:41:11Z
 
 ### Plone
