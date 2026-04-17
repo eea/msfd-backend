@@ -1,6 +1,28 @@
 # Changelog
 
 
+## [6.1.3-18](https://github.com/eea/msfd-backend/releases/tag/6.1.3-18) - 2026-04-17T00:36:20Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.3-18 ~ 6.1.3-19 
+
+##### eeacms/plone-backend:[6.1.3-19](https://github.com/eea/plone-backend/releases/tag/6.1.3-19)
+###### Dependency updates
+
+###### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 12.0 ~ 12.1
+
+* Change: Change header defaults
+ [razvanMiu]
+
+### Dependency updates
+
+##### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 12.0 ~ 12.1
+
+* Change: Change header defaults
+  [razvanMiu]
+
+
 ## [6.1.3-17](https://github.com/eea/msfd-backend/releases/tag/6.1.3-17) - 2026-04-16T00:36:27Z
 
 ### Plone
