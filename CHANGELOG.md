@@ -1,6 +1,28 @@
 # Changelog
 
 
+## [6.1.3-20](https://github.com/eea/msfd-backend/releases/tag/6.1.3-20) - 2026-04-22T00:27:53Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.3-20 ~ 6.1.3-21 
+
+##### eeacms/plone-backend:[6.1.3-21](https://github.com/eea/plone-backend/releases/tag/6.1.3-21)
+###### Dependency updates
+
+###### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 12.2 ~ 12.3
+
+* Change: Rename header settings control panel and add @layout-blocks-duplicates endpoint
+ [razvanMiu]
+
+### Dependency updates
+
+##### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 12.2 ~ 12.3
+
+* Change: Rename header settings control panel and add @layout-blocks-duplicates endpoint
+  [razvanMiu]
+
+
 ## [6.1.3-19](https://github.com/eea/msfd-backend/releases/tag/6.1.3-19) - 2026-04-18T00:40:20Z
 
 ### Plone
