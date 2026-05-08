@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [6.1.4-4](https://github.com/eea/msfd-backend/releases/tag/6.1.4-4) - 2026-05-08T23:34:16Z
+
+### Dependency updates
+
+##### [eea.api.dataconnector](https://github.com/eea/eea.api.dataconnector/releases): 12.6 ~ 12.7
+
+* Fix: list index out of range
+  [avoinea - sentry #420262]
+
+
 ## [6.1.4-2](https://github.com/eea/msfd-backend/releases/tag/6.1.4-2) - 2026-04-29T15:38:44Z
 
 ### Plone
