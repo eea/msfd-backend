@@ -1,6 +1,17 @@
 # Changelog
 
 
+## [6.1.4-17](https://github.com/eea/msfd-backend/releases/tag/6.1.4-17) - 2026-06-10T00:14:34Z
+
+### Dependency updates
+
+##### [eea.api.dataconnector](https://github.com/eea/eea.api.dataconnector/releases): 12.7 ~ 12.8
+
+* Fix: return 404 from ``@connector-data`` for content without a connector
+  data provider instead of raising ``ValueError``
+  [dobri1408]
+
+
 ## [6.1.4-16](https://github.com/eea/msfd-backend/releases/tag/6.1.4-16) - 2026-06-04T10:04:27Z
 
 ### Plone
