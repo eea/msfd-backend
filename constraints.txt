@@ -34,16 +34,16 @@
 # plone.api - managed by Plone 6 constraints
 
 # EEA packages with versions
-eea.api.dataconnector==12.5
+eea.api.dataconnector==12.8
 eea.restapi==2.9
-eea.plotly==2.2
-eea.coremetadata==5.4
-eea.volto.policy==11.3
-eea.progress.workflow==3.1
+eea.plotly==2.4
+eea.coremetadata==5.5
+eea.volto.policy==12.7
+eea.progress.workflow==3.2
 eea.api.visualizationutils==1.4
 
 # WISE packages
-wise.msfd==7.3
+wise.msfd==8.9
 
 # Collective packages - updated versions for Plone 6
 collective.exportimport==1.15

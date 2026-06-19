@@ -1,36 +1,26 @@
 # Test Suite
 
-See more about this test suite [Official Images Test Suite](https://github.com/docker-library/official-images/tree/master/test)
-
 ## Running Tests
 
 ```console
 $ ./run.sh
 
 usage: run.sh [-t test ...] image:tag [...]
-   ie: run.sh eeacms/plone
-       run.sh -t utc eeacms/plone
-       run.sh -t utc eeacms/plone -t plone-addons
+   ie: run.sh eeacms/plone-backend:6.0.0a1
+       run.sh -t utc eeacms/plone-backend:6.0.0a1
 
 This script processes the specified Docker images to test their running
 environments.
 ```
 
-Run all the tests that are applicable to the `eeacms/plone` image:
+Run all the tests that are applicable to the `eeacms/plone-backend:6.0.0a1` image:
 
 ```console
-$ ./run.sh eeacms/plone
-testing eeacms/plone
-	'utc' [1/2]...passed
-	'cve-2014--shellshock' [2/2]...passed
-```
-
-Try to run just the `plone-cors` test against the `eeacms/plone` image:
-
-```console
-$ ./run.sh -t plone-cors eeacms/plone
-testing eeacms/plone
-	'plone-cors' [1/1]...passed
+$ ./run.sh eeacms/plone-backend:6.0.0a1
+testing eeacms/plone-backend:6.0.0a1
+	'utc' [1/4]...passed
+	'no-hard-coded-passwords' [2/4]...passed
+	'override-cmd' [3/4]...passed
 ```
 
 ## Writing Tests
@@ -67,8 +57,8 @@ To continue with our `utc` test example, its contents in this file are simply:
 If a test fails due to having incorrect output, the `diff` between the generated output and the expected output will be displayed:
 
 ```console
-$ ./run.sh -t utc eeacms/plone
-testing eeacms/plone
+$ ./run.sh -t utc eeacms/plone-backend:6.0.0a1
+testing eeacms/plone-backend:6.0.0a1
 	'utc' [1/1]...failed; unexpected output:
 --- tests/utc/expected-std-out.txt	2015-02-05 16:52:05.013273118 -0700
 +++ -	2015-03-13 15:11:49.725116569 -0600
@@ -77,11 +67,7 @@ testing eeacms/plone
 +EDT
 ```
 
-#### `tests/run-*-in-container.sh`
-
-These scripts are intended to be used as symlink targets for test `run.sh` scripts.
-
-For example, if `tests/plone-sometest/run.sh` is a symlink to `../run-python-in-container.sh`, then `tests/run-python-in-container.sh` will execute `python tests/plone-sometest/container.py` inside the image.
+(this is an example of `eeacms/plone-backend:6.0.0a1` failing the `utc` test)
 
 ## Configuring the Test Suite
 
@@ -98,39 +84,17 @@ This list of tests applies to every image minus combinations listed in `globalEx
 ```bash
 globalTests+=(
 	utc
-	cve-2014--shellshock
+	no-hard-coded-passwords
 )
 ```
 
 #### `testAlias=( [image]='image' ... )`
 
-This array defines image aliases -- for example, the `pypy` image should inherit all the standard `python` image tests, since it's a functionally equivalent implementation of Python. As noted in `globalTests`, any image+test combinations that shouldn't or can't be tested as a result of this aliasing can be excluded via `globalExcludeTests`.
-
-```bash
-testAlias+=(
-	[pypy]='python'
-	[jruby]='ruby'
-
-	[mariadb]='mysql'
-	[percona]='mysql'
-)
-```
+This array defines image aliases 
 
 #### `imageTests=( [image]='test ...' ... )`
 
-This array defines the list of explicit tests for each image. For example, the `mysql` image (and aliased derivatives via `testAlias`) has a test which verifies that basic functionality works, such as starting up the image and connecting to it from a separate container.
-
-```bash
-imageTests+=(
-	[python]='
-		python-hy
-		python-pip-requests-ssl
-	'
-	[mysql]='
-		mysql-basics
-	'
-)
-```
+This array defines the list of explicit tests for each image. For example, the `zeo` image has a test which verifies that basic functionality works, such as starting up the image and connecting to it from a separate container.
 
 #### `globalExcludeTests=( [image_test]=1 ... )`
 
@@ -140,7 +104,6 @@ Defines image+test combinations which shouldn't ever run (usually because they w
 globalExcludeTests+=(
 	# single-binary images
 	[hello-world_utc]=1
-	[swarm_utc]=1
 )
 ```
 

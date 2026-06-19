@@ -5,11 +5,11 @@ dir="$(dirname "$(readlink -f "$BASH_SOURCE")")"
 
 image="$1"
 
-PLONE_TEST_SLEEP=15
-PLONE_TEST_TRIES=40
+PLONE_TEST_SLEEP=10
+PLONE_TEST_TRIES=20
 
 cname="plone-container-$RANDOM-$RANDOM"
-cid="$(docker run -d --name "$cname" "$image")"
+cid="$(docker run -d --name "$cname" -e LISTEN_PORT=8081 "$image")"
 trap "docker rm -vf $cid > /dev/null" EXIT
 
 get() {
@@ -20,7 +20,7 @@ get() {
 		-c "from urllib.request import urlopen; con = urlopen('$1'); print(con.read())"
 }
 
-. "$dir/../../retry.sh" --tries "$PLONE_TEST_TRIES" --sleep "$PLONE_TEST_SLEEP" get "http://plone:8080"
+. "$dir/../../retry.sh" --tries "$PLONE_TEST_TRIES" --sleep "$PLONE_TEST_SLEEP" get "http://plone:8081"
 
 # Plone is up and running
-[[ "$(get 'http://plone:8080')" == *"Welcome to Plone!"* ]]
+[[ "$(get 'http://plone:8081')" == *"Welcome to Plone!"* ]]
