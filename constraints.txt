@@ -38,7 +38,7 @@ eea.api.dataconnector==12.8
 eea.restapi==2.9
 eea.plotly==2.4
 eea.coremetadata==6.0
-eea.volto.policy==13.1
+eea.volto.policy==13.2
 eea.progress.workflow==3.2
 eea.api.visualizationutils==1.4
 
