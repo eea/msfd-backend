@@ -39,7 +39,7 @@ eea.restapi==2.9
 eea.plotly==2.5
 eea.coremetadata==6.1
 eea.volto.policy==13.3
-eea.progress.workflow==3.2
+eea.progress.workflow==3.3
 eea.api.visualizationutils==1.4
 
 # WISE packages
