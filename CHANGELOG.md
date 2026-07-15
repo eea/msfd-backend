@@ -1,6 +1,35 @@
 # Changelog
 
 
+## [6.1.4-31](https://github.com/eea/msfd-backend/releases/tag/6.1.4-31) - 2026-07-15T23:57:19Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.4-11 ~ 6.1.4-12 
+
+##### eeacms/plone-backend:[6.1.4-12](https://github.com/eea/plone-backend/releases/tag/6.1.4-12)
+###### Dependency updates
+
+###### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 6.1 ~ 6.2
+
+* Change: Replace the generated Publication type taxonomy field with the
+ dedicated ``publication_type`` behavior and migrate its catalog and
+ search configuration.
+ [dobri1408]
+
+### Dependency updates
+
+##### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 6.1 ~ 6.2
+
+* Change: Replace the generated Publication type taxonomy field with the
+  dedicated ``publication_type`` behavior and migrate its catalog and
+  search configuration.
+  [dobri1408]
+
+### Internal
+
+- fix: Add betterleaks github action - refs #304517 - [dobri1408 -  [`c9744c1`](https://github.com/eea/msfd-backend/commit/c9744c11b046fe740d83547cd2e8d885569142d7)]
+
 ## [6.1.4-30](https://github.com/eea/msfd-backend/releases/tag/6.1.4-30) - 2026-07-14T01:03:22Z
 
 ### Plone
