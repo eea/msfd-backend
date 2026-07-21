@@ -51,12 +51,12 @@ pipeline {
               tagName = "$BRANCH_NAME"
             }
             try {
-              dockerImage = docker.build("$registry:$tagName", "--no-cache .")
+              dockerImage = docker.build("$IMAGE_NAME:$tagName", "--no-cache .")
               docker.withRegistry( '', 'eeajenkins' ) {
                 dockerImage.push()
               }
             } finally {
-              sh "docker rmi $registry:$tagName"
+              sh "docker rmi $IMAGE_NAME:$tagName"
             }
           }
         }
