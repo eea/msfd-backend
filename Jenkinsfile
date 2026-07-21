@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-    node { label 'docker-host' }
-  }
+  agent any
 
   environment {
     IMAGE_NAME = "eeacms/msfd-backend"
@@ -21,6 +19,7 @@ pipeline {
         TAG = BUILD_TAG.toLowerCase()
       }
       steps {
+        node(label: 'docker') {
           script {
             try {
               checkout scm
@@ -30,44 +29,20 @@ pipeline {
               sh script: "docker rmi ${IMAGE_NAME}:${TAG}", returnStatus: true
             }
           }
+        }
       }
     }
  
-
-    stage('Build & Push ( on tag or latest )') {
-      when {
-        anyOf {
-          buildingTag()
-          branch 'master'
-        }
-      }
-      steps{
-          script {
-            checkout scm
-            if (env.BRANCH_NAME == 'master') {
-              tagName = 'latest'
-            } else {
-              tagName = "$BRANCH_NAME"
-            }
-            try {
-              dockerImage = docker.build("$IMAGE_NAME:$tagName", "--no-cache .")
-              docker.withRegistry( '', 'eeajenkins' ) {
-                dockerImage.push()
-              }
-            } finally {
-              sh "docker rmi $IMAGE_NAME:$tagName"
-            }
-        }
-      }
-    }
-    
     stage('Release on tag creation') {
       when {
         buildingTag()
       }
       steps{
+        node(label: 'docker') {
           withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GITHUB_TOKEN'),  string(credentialsId: 'msfd-backend-trigger', variable: 'TRIGGER_MAIN_URL'), usernamePassword(credentialsId: 'jekinsdockerhub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) { //betterleaks:allow
            sh '''docker pull eeacms/gitflow; docker run -i --rm --name="$BUILD_TAG"  -e GIT_BRANCH="$BRANCH_NAME" -e GIT_NAME="$GIT_NAME" -e DOCKERHUB_REPO="eeacms/msfd-backend" -e GIT_TOKEN="$GITHUB_TOKEN" -e DOCKERHUB_USER="$DOCKERHUB_USER" -e DOCKERHUB_PASS="$DOCKERHUB_PASS"  -e TRIGGER_MAIN_URL="$TRIGGER_MAIN_URL" -e DEPENDENT_DOCKERFILE_URL="" -e GITFLOW_BEHAVIOR="RUN_ON_TAG" eeacms/gitflow'''
+         }
+
         }
       }
     }
@@ -82,12 +57,14 @@ pipeline {
         buildingTag()
       }
       steps{
+        node(label: 'docker') {
           withSonarQubeEnv('Sonarqube') {
             withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GIT_TOKEN')]) {
               sh '''docker pull eeacms/gitflow'''
               sh '''docker run -i --rm --name="${BUILD_TAG}-sonar" -e GIT_NAME=${GIT_NAME} -e GIT_TOKEN="${GIT_TOKEN}" -e SONARQUBE_TAG=${SONARQUBE_TAG} -e SONARQUBE_TOKEN=${SONAR_AUTH_TOKEN} -e SONAR_HOST_URL=${SONAR_HOST_URL}  eeacms/gitflow /update_sonarqube_tags_backend.sh'''
             }
-         }
+          }
+        }
       }
     }
 
@@ -99,11 +76,13 @@ pipeline {
         buildingTag()
       }
       steps{
+        node(label: 'docker') {
           withSonarQubeEnv('Sonarqube') {
             withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GIT_TOKEN')]) {
               sh '''docker pull eeacms/gitflow'''
               sh '''docker run -i --rm --name="${BUILD_TAG}-sonar" -e GIT_NAME=${GIT_NAME} -e GIT_TOKEN="${GIT_TOKEN}" -e SONARQUBE_TAG=${SONARQUBE_TAG_DEMO} -e SONARQUBE_TOKEN=${SONAR_AUTH_TOKEN} -e SONAR_HOST_URL=${SONAR_HOST_URL}  eeacms/gitflow /update_sonarqube_tags_backend.sh'''
             }
+          }
         }
       }
     }
