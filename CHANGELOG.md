@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [6.1.4-37](https://github.com/eea/msfd-backend/releases/tag/6.1.4-37) - 2026-07-21T23:56:16Z
+
+### Internal
+
+- chore: revert Move image build to Jenkins - [Laszlo Cseh -  [`6c1cdef`](https://github.com/eea/msfd-backend/commit/6c1cdef90242bfa5bb3cc0e2f3af8c542e31fc2a)]
+
 ## [6.1.4-31](https://github.com/eea/msfd-backend/releases/tag/6.1.4-31) - 2026-07-15T23:57:19Z
 
 ### Plone
