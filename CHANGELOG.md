@@ -1,6 +1,28 @@
 # Changelog
 
 
+## [6.1.4-40](https://github.com/eea/msfd-backend/releases/tag/6.1.4-40) - 2026-07-29T01:08:48Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.4-12 ~ 6.1.4-13 
+
+##### eeacms/plone-backend:[6.1.4-13](https://github.com/eea/plone-backend/releases/tag/6.1.4-13)
+###### Dependency updates
+
+###### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 6.2 ~ 6.3
+
+* Change: Fix publication_type taxonomy vocabulary - refs #305522
+ [avoinea]
+
+### Dependency updates
+
+##### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 6.2 ~ 6.3
+
+* Change: Fix publication_type taxonomy vocabulary - refs #305522
+  [avoinea]
+
+
 ## [6.1.4-38](https://github.com/eea/msfd-backend/releases/tag/6.1.4-38) - 2026-07-23T23:59:23Z
 
 ### Dependency updates
