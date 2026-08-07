@@ -12,6 +12,7 @@
 
 # EEA packages
 eea.api.dataconnector
+eea.restapi
 eea.plotly
 eea.coremetadata
 eea.volto.policy
