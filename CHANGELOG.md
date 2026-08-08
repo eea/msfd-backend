@@ -1,6 +1,28 @@
 # Changelog
 
 
+## [6.1.4-47](https://github.com/eea/msfd-backend/releases/tag/6.1.4-47) - 2026-08-08T01:12:50Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.4-15 ~ 6.1.4-16 
+
+##### eeacms/plone-backend:[6.1.4-16](https://github.com/eea/plone-backend/releases/tag/6.1.4-16)
+###### Internal
+
+- fix: arm64 image builds on github actions - [Alin Voinea - [`35cd2ff`](https://github.com/eea/plone-backend/commit/35cd2ff11bafcc6b19b5fb2425903f94acbee89b)]
+
+### Dependency updates
+
+#### New packages
+
+##### [eea.restapi](https://github.com/eea/eea.restapi): 2.9
+
+### Internal
+
+- Add eea.restapi package version 2.9 to constraints - [Laszlo Cseh -  [`53d048c`](https://github.com/eea/msfd-backend/commit/53d048cb6ced8dec00d1404840073e89cae038c3)]
+- Add eea.restapi to requirements - [Laszlo Cseh -  [`a03c2c8`](https://github.com/eea/msfd-backend/commit/a03c2c84cc239fce1ce792797588656e4ac26e3e)]
+
 ## [6.1.4-40](https://github.com/eea/msfd-backend/releases/tag/6.1.4-40) - 2026-07-29T01:08:48Z
 
 ### Plone
