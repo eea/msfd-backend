@@ -35,7 +35,6 @@
 
 # EEA packages with versions
 eea.api.dataconnector==12.9
-eea.restapi==2.9
 eea.plotly==2.5
 eea.coremetadata==6.4
 eea.volto.policy==13.4
