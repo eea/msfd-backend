@@ -34,7 +34,7 @@
 # plone.api - managed by Plone 6 constraints
 
 # EEA packages with versions
-eea.api.dataconnector==12.9
+eea.api.dataconnector==13.0
 eea.plotly==2.5
 eea.coremetadata==6.4
 eea.volto.policy==13.7
