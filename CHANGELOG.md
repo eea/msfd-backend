@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [6.1.4-52](https://github.com/eea/msfd-backend/releases/tag/6.1.4-52) - 2026-08-22T00:05:12Z
+
+### Dependency updates
+
+##### [wise.msfd](https://pypi.org/project/wise.msfd/#changelog): 11.0 ~ 11.1
+
+
 ## [6.1.4-47](https://github.com/eea/msfd-backend/releases/tag/6.1.4-47) - 2026-08-08T01:12:50Z
 
 ### Plone
