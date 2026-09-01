@@ -1,6 +1,326 @@
 # Changelog
 
 
+## [6.1.4-53](https://github.com/eea/msfd-backend/releases/tag/6.1.4-53) - 2026-08-25T23:50:54Z
+
+### Dependency updates
+
+##### [wise.msfd](https://pypi.org/project/wise.msfd/#changelog): 11.1 ~ 11.2
+
+
+## [6.1.4-52](https://github.com/eea/msfd-backend/releases/tag/6.1.4-52) - 2026-08-22T00:05:12Z
+
+### Dependency updates
+
+##### [wise.msfd](https://pypi.org/project/wise.msfd/#changelog): 11.0 ~ 11.1
+
+
+## [6.1.4-47](https://github.com/eea/msfd-backend/releases/tag/6.1.4-47) - 2026-08-08T01:12:50Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.4-15 ~ 6.1.4-16 
+
+##### eeacms/plone-backend:[6.1.4-16](https://github.com/eea/plone-backend/releases/tag/6.1.4-16)
+###### Internal
+
+- fix: arm64 image builds on github actions - [Alin Voinea - [`35cd2ff`](https://github.com/eea/plone-backend/commit/35cd2ff11bafcc6b19b5fb2425903f94acbee89b)]
+
+### Dependency updates
+
+#### New packages
+
+##### [eea.restapi](https://github.com/eea/eea.restapi): 2.9
+
+### Internal
+
+- Add eea.restapi package version 2.9 to constraints - [Laszlo Cseh -  [`53d048c`](https://github.com/eea/msfd-backend/commit/53d048cb6ced8dec00d1404840073e89cae038c3)]
+- Add eea.restapi to requirements - [Laszlo Cseh -  [`a03c2c8`](https://github.com/eea/msfd-backend/commit/a03c2c84cc239fce1ce792797588656e4ac26e3e)]
+
+## [6.1.4-40](https://github.com/eea/msfd-backend/releases/tag/6.1.4-40) - 2026-07-29T01:08:48Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.4-12 ~ 6.1.4-13 
+
+##### eeacms/plone-backend:[6.1.4-13](https://github.com/eea/plone-backend/releases/tag/6.1.4-13)
+###### Dependency updates
+
+###### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 6.2 ~ 6.3
+
+* Change: Fix publication_type taxonomy vocabulary - refs #305522
+ [avoinea]
+
+### Dependency updates
+
+##### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 6.2 ~ 6.3
+
+* Change: Fix publication_type taxonomy vocabulary - refs #305522
+  [avoinea]
+
+
+## [6.1.4-38](https://github.com/eea/msfd-backend/releases/tag/6.1.4-38) - 2026-07-23T23:59:23Z
+
+### Dependency updates
+
+##### [wise.msfd](https://pypi.org/project/wise.msfd/#changelog): 9.9 ~ 10.0
+
+
+## [6.1.4-37](https://github.com/eea/msfd-backend/releases/tag/6.1.4-37) - 2026-07-21T23:56:16Z
+
+### Internal
+
+- chore: revert Move image build to Jenkins - [Laszlo Cseh -  [`6c1cdef`](https://github.com/eea/msfd-backend/commit/6c1cdef90242bfa5bb3cc0e2f3af8c542e31fc2a)]
+
+## [6.1.4-31](https://github.com/eea/msfd-backend/releases/tag/6.1.4-31) - 2026-07-15T23:57:19Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.4-11 ~ 6.1.4-12 
+
+##### eeacms/plone-backend:[6.1.4-12](https://github.com/eea/plone-backend/releases/tag/6.1.4-12)
+###### Dependency updates
+
+###### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 6.1 ~ 6.2
+
+* Change: Replace the generated Publication type taxonomy field with the
+ dedicated ``publication_type`` behavior and migrate its catalog and
+ search configuration.
+ [dobri1408]
+
+### Dependency updates
+
+##### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 6.1 ~ 6.2
+
+* Change: Replace the generated Publication type taxonomy field with the
+  dedicated ``publication_type`` behavior and migrate its catalog and
+  search configuration.
+  [dobri1408]
+
+### Internal
+
+- fix: Add betterleaks github action - refs #304517 - [dobri1408 -  [`c9744c1`](https://github.com/eea/msfd-backend/commit/c9744c11b046fe740d83547cd2e8d885569142d7)]
+
+## [6.1.4-30](https://github.com/eea/msfd-backend/releases/tag/6.1.4-30) - 2026-07-14T01:03:22Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.4-10 ~ 6.1.4-11 
+
+##### eeacms/plone-backend:[6.1.4-11](https://github.com/eea/plone-backend/releases/tag/6.1.4-11)
+###### Dependency updates
+
+###### [eea.api.controlpanel](https://github.com/eea/eea.api.controlpanel/releases): 1.3 ~ 1.4
+
+* Change: fix: SonarQube report - refs #305404
+ [avoinea]
+
+###### [eea.api.glossary](https://pypi.org/project/eea.api.glossary/#changelog): 1.6 ~ 1.7
+
+###### [eea.api.layout](https://github.com/eea/eea.api.layout/releases): 3.4 ~ 3.5
+
+* Change: fix: SonarQube report - refs #305404
+ [avoinea]
+
+###### [eea.banner](https://github.com/eea/eea.banner/releases): 1.7 ~ 1.8
+
+* Change: fix: SonarQube report - refs #305404
+ [avoinea]
+
+###### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 6.0 ~ 6.1
+
+* Feature: Add the Publication type taxonomy, search configuration,
+ content-type behavior activation and CSV content migration report.
+ [refs #305522]
+
+###### [eea.geolocation](https://github.com/eea/eea.geolocation/releases): 4.0 ~ 4.1
+
+* Change: fix: SonarQube report - refs #305404
+ [avoinea]
+
+###### [eea.kitkat](https://github.com/eea/eea.kitkat/releases): 8.4 ~ 8.5
+
+* Change: fix: SonarQube report - refs #305404
+ [avoinea]
+
+###### [eea.schema.slate](https://github.com/eea/eea.schema.slate/releases): 1.3 ~ 1.4
+
+* Change: fix: SonarQube report - refs #305404
+ [avoinea]
+
+###### [eea.sentry](https://github.com/eea/eea.sentry/releases): 3.1 ~ 3.2
+
+* Change: fix: SonarQube report - refs #305404
+ [avoinea]
+
+###### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 13.2 ~ 13.3
+
+* Change: fix: SonarQube report - refs #305404
+ [avoinea]
+
+###### [eea.zotero](https://github.com/eea/eea.zotero/releases): 1.5 ~ 1.6
+
+* Change: fix: SonarQube report - refs #305404
+ [avoinea]
+
+### Dependency updates
+
+##### [eea.api.dataconnector](https://github.com/eea/eea.api.dataconnector/releases): 12.8 ~ 12.9
+
+* Change: fix: SonarQube report - refs #305404
+  [avoinea]
+
+##### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 6.0 ~ 6.1
+
+* Feature: Add the Publication type taxonomy, search configuration,
+  content-type behavior activation and CSV content migration report.
+  [refs #305522]
+
+##### [eea.plotly](https://github.com/eea/eea.plotly/releases): 2.4 ~ 2.5
+
+* Change: fix: SonarQube report - refs #305404
+  [avoinea]
+
+##### [eea.progress.workflow](https://github.com/eea/eea.progress.workflow/releases): 3.2 ~ 3.3
+
+* Change: fix: SonarQube report - refs #305404
+  [avoinea]
+
+##### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 13.2 ~ 13.3
+
+* Change: fix: SonarQube report - refs #305404
+  [avoinea]
+
+
+## [6.1.4-29](https://github.com/eea/msfd-backend/releases/tag/6.1.4-29) - 2026-07-11T23:52:37Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.4-9 ~ 6.1.4-10 
+
+##### eeacms/plone-backend:[6.1.4-10](https://github.com/eea/plone-backend/releases/tag/6.1.4-10)
+###### Dependency updates
+
+###### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 13.1 ~ 13.2
+
+* Fix: Delegate to collective.exportimport's image serializers when one of its
+ export markers is present on the request.
+ [claudiaifrim - refs #304938]
+
+### Dependency updates
+
+##### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 13.1 ~ 13.2
+
+* Fix: Delegate to collective.exportimport's image serializers when one of its
+  export markers is present on the request.
+  [claudiaifrim - refs #304938]
+
+
+## [6.1.4-26](https://github.com/eea/msfd-backend/releases/tag/6.1.4-26) - 2026-07-08T00:00:07Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.4-8 ~ 6.1.4-9 
+
+##### eeacms/plone-backend:[6.1.4-9](https://github.com/eea/plone-backend/releases/tag/6.1.4-9)
+###### Dependency updates
+
+###### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 13.0 ~ 13.1
+
+* Fix: Normalize internal backend URLs (e.g. backend:8080) saved in volto blocks
+ by SSR to avoid broken links. Add unit tests for URL normalizer.
+ [razvanMiu - refs #305419]
+
+### Dependency updates
+
+##### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 13.0 ~ 13.1
+
+* Fix: Normalize internal backend URLs (e.g. backend:8080) saved in volto blocks
+  by SSR to avoid broken links. Add unit tests for URL normalizer.
+  [razvanMiu - refs #305419]
+
+##### [wise.msfd](https://pypi.org/project/wise.msfd/#changelog): 9.2 ~ 9.3
+
+
+## [6.1.4-25](https://github.com/eea/msfd-backend/releases/tag/6.1.4-25) - 2026-07-05T23:57:26Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.4-7 ~ 6.1.4-8 
+
+##### eeacms/plone-backend:[6.1.4-8](https://github.com/eea/plone-backend/releases/tag/6.1.4-8)
+###### Internal
+
+- use postgres 14 - [valentinab25 - [`a94bc84`](https://github.com/eea/plone-backend/commit/a94bc84848c3928f235c3667030b8041a20a06be)]
+
+
+## [6.1.4-24](https://github.com/eea/msfd-backend/releases/tag/6.1.4-24) - 2026-07-01T23:46:40Z
+
+### Dependency updates
+
+##### [wise.msfd](https://pypi.org/project/wise.msfd/#changelog): 9.0 ~ 9.2
+
+
+## [6.1.4-23](https://github.com/eea/msfd-backend/releases/tag/6.1.4-23) - 2026-06-25T16:25:08Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.4-6 ~ 6.1.4-7 
+
+##### eeacms/plone-backend:[6.1.4-7](https://github.com/eea/plone-backend/releases/tag/6.1.4-7)
+###### Dependency updates
+
+###### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 5.5 ~ 6.0
+
+* Feature: Add IGeoCoverageField marker interface on geo_coverage field
+ for scoped serializer adapter registration in eea.volto.policy
+ [avoinea - refs #296992]
+
+###### [eea.geolocation](https://github.com/eea/eea.geolocation/releases): 3.0 ~ 4.0
+
+* Feature: Add grouped geographic coverage helper methos
+ [tedw87 - refs #296992]
+* Change: Drop Python 2.7 and Plone 4 support.
+ [avoinea - refs #296992]
+* Fix: Replace lossy latin-1 encoding with explicit PATH_SEPARATOR stripping
+ in taxonomy value normalization
+ [avoinea - refs #296992]
+* Feature: Add RAM caching (plone.memoize) to geotags, biotags and country
+ mappings taxonomy parsing
+ [avoinea - refs #296992]
+
+###### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 12.7 ~ 13.0
+
+* Feature: Scope geo_coverage serializer to IGeoCoverageField marker interface
+ instead of all JSON fields. Add eea.geolocation as explicit dependency.
+ [avoinea - refs #296992]
+* Feature: Serialize grouped geographic coverage
+ [tedw87 - refs #296992]
+
+### Dependency updates
+
+##### [eea.coremetadata](https://github.com/eea/eea.coremetadata/releases): 5.5 ~ 6.0
+
+* Feature: Add IGeoCoverageField marker interface on geo_coverage field
+  for scoped serializer adapter registration in eea.volto.policy
+  [avoinea - refs #296992]
+
+##### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 12.7 ~ 13.0
+
+* Feature: Scope geo_coverage serializer to IGeoCoverageField marker interface
+  instead of all JSON fields. Add eea.geolocation as explicit dependency.
+  [avoinea - refs #296992]
+* Feature: Serialize grouped geographic coverage
+  [tedw87 - refs #296992]
+
+
+## [6.1.4-22](https://github.com/eea/msfd-backend/releases/tag/6.1.4-22) - 2026-06-24T17:21:04Z
+
+### Dependency updates
+
+##### [wise.msfd](https://pypi.org/project/wise.msfd/#changelog): 8.9 ~ 9.0
+
+
 ## [6.1.4-21](https://github.com/eea/msfd-backend/releases/tag/6.1.4-21) - 2026-06-18T01:06:03Z
 
 ### Plone
