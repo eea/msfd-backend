@@ -42,7 +42,7 @@ eea.progress.workflow==3.3
 eea.api.visualizationutils==1.4
 
 # WISE packages
-wise.msfd==11.3
+wise.msfd==11.4
 
 # Collective packages - updated versions for Plone 6
 collective.exportimport==1.15
