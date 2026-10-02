@@ -1,6 +1,38 @@
 # Changelog
 
 
+## [6.1.4-64](https://github.com/eea/msfd-backend/releases/tag/6.1.4-64) - 2026-10-02T01:26:58Z
+
+### Plone
+
+#### Upgrade [eeacms/plone-backend](https://github.com/eea/plone-backend): 6.1.4-21 ~ 6.1.4-23 
+
+##### eeacms/plone-backend:[6.1.4-23](https://github.com/eea/plone-backend/releases/tag/6.1.4-23)
+###### Dependency updates
+
+###### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 14.0 ~ 14.1
+
+* Change: Add children sort_order and sort_on for given portal_types to sort
+ [nileshgulia1]
+##### eeacms/plone-backend:[6.1.4-22](https://github.com/eea/plone-backend/releases/tag/6.1.4-22)
+###### Dependency updates
+
+###### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 13.9 ~ 14.0
+
+* Change: Revert to no subsite logo behavior, not needed 
+ [tedw87]
+
+### Dependency updates
+
+##### [eea.volto.policy](https://github.com/eea/eea.volto.policy/releases): 13.9 ~ 14.1
+
+* Change: Add children sort_order and sort_on for given portal_types to sort
+  [nileshgulia1]
+
+* Change: Revert to no subsite logo behavior, not needed 
+  [tedw87]
+
+
 ## [6.1.4-63](https://github.com/eea/msfd-backend/releases/tag/6.1.4-63) - 2026-09-30T00:28:09Z
 
 ### Plone
